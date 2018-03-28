@@ -4,11 +4,14 @@
 
 public class Maze
 {
+  public static int ROWS = 10;
+  public static int COLUMNS = 25;
+    
   private final char TRIED = 'T';
   private final char PATH = '7';
-  
+  public static double PercentOfSuccessfulMovement = 50;
   // 1 == clear, 0 == blocked
-  public static char[][] grid = 
+  public static char[][] grid = new char[ROWS][COLUMNS];
     /*
   {
     {1,1,1,0,1,1,0,0,0,1,1,1,1},//1
@@ -19,7 +22,7 @@ public class Maze
     {1,0,1,1,1,1,1,1,0,1,1,1,1},//6
     {1,1,1,1,1,1,1,1,1,1,1,1,1}//7
   };
-  */
+  
 {
 { ' ', ' ', ' ', '|', ' ', ' ', '|', '|', '|', '|', ' ', ' ', ' '},//1
 { ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', '|', '|', ' '},//2
@@ -28,7 +31,7 @@ public class Maze
 { ' ', '|', ' ', '|', '|', '|', '|', ' ', ' ', ' ', '|', '|', ' '},//5
 { ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' '},//6
 { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}//7
-};
+}; */
   //create a tecursive method to solve the maze
   //insert charcters for locations " tried" and "path"
   public boolean traverse(int row, int column)
@@ -99,11 +102,10 @@ public class Maze
   
   public static void RandomizeTheMaze()
   {   //13x7
-
     for (int i = 0; i < grid.length; i++) {
     for (int j = 0; j < grid[i].length; j++) {
       int temp1 = (int)(Math.random()*100);
-      if(temp1 <=42 )
+      if(temp1 <=PercentOfSuccessfulMovement)
       {grid[i][j] = ' ';}
       else//(temp1 == 1)
       {grid[i][j] = '|';}
@@ -112,6 +114,15 @@ public class Maze
     }
 }
 }
+  public static void setROWS(double n)
+  {
+    ROWS = (int)(n);
+  }
+  
+  public static void setCOLUMNS(double n)
+  {
+    COLUMNS = (int)(n);
+  }
 }
 
 
